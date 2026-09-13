@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration
 {
@@ -12,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('cauthu', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->integer('age');
+            $table->string('national');
+            $table->string('position');
+            $table->decimal('salary',15,2);
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('cauthu');
     }
 };
